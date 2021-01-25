@@ -46,167 +46,232 @@ app.event('app_home_opened', async ({ event, client, context }) => {
 	"type": "home",
 	"blocks": [
 		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Select Channel To Manage",
+				"emoji": true
+			}
+		},
+		{
+			"type": "input",
+			"element": {
+				"type": "static_select",
+				"placeholder": {
+					"type": "plain_text",
+					"text": "#porobot-demo",
+					"emoji": true
+				},
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "*this is plain_text text*",
+							"emoji": true
+						},
+						"value": "value-0"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "*this is plain_text text*",
+							"emoji": true
+						},
+						"value": "value-1"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "*this is plain_text text*",
+							"emoji": true
+						},
+						"value": "value-2"
+					}
+				],
+				"action_id": "static_select-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": " ",
+				"emoji": true
+			}
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "PoroBot porobot-demo (#porobot-demo)",
+				"emoji": true
+			}
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "#ask-porobot",
+						"emoji": true
+					},
+					"value": "click_me_123",
+					"action_id": "actionId-0",
+					"style": "primary"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Documentation",
+						"emoji": true
+					},
+					"value": "click_me_123",
+					"action_id": "actionId-1",
+					"style": "primary"
+				}
+			]
+		},
+		{
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "*Nike Lookup App*"
+				"text": "*Settings*"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":black_small_square: General Settings"
 			},
 			"accessory": {
 				"type": "button",
 				"text": {
 					"type": "plain_text",
-					"text": ":nike:",
+					"text": "Configure",
 					"emoji": true
 				},
 				"value": "click_me_123",
-				"action_id": "button-action"
-			}
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "header",
-			"text": {
-				"type": "plain_text",
-				"text": ":trophy: Goal Tracker :trophy:\n\n  Store-1458",
-				"emoji": true
+				"action_id": "general-settings"
 			}
 		},
 		{
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "Leaderboard"
-			}
-		},
-		{
-			"type": "context",
-			"elements": [
-				{
-					"type": "mrkdwn",
-					"text": "*Who's currently winning?*"
-				},
-				{
-					"type": "image",
-					"image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX6Fkw11_f3j-XYGQS5MzH_Bfkdu-zrmASwA&usqp=CAU",
-					"alt_text": " "
-				}
-			]
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "context",
-			"elements": [
-				{
-					"type": "image",
-					"image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png",
-					"alt_text": " "
-				},
-				{
-					"type": "plain_text",
-					"emoji": true,
-					"text": "Jordan"
-				}
-			]
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*<@WA6C1KQ3W>*\n\n*Customer Interactions*\n:arrow_up: *43%* from last week\n\n*Products Sold*\n:arrow_up: *89%* from last week\n\n*Upsold*\n:arrow_up: *18%* from last week\n"
+				"text": ":black_small_square: Welcome Message"
 			},
 			"accessory": {
-				"type": "image",
-				"image_url": "https://ca.slack-edge.com/EA62SV8QZ-WA6C1KQ3W-97ae19bb4b38-512",
-				"alt_text": " "
-			}
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "context",
-			"elements": [
-				{
-					"type": "image",
-					"image_url": "https://www.logolynx.com/images/logolynx/2a/2ab5aba3124262970e5235e1758db9df.jpeg",
-					"alt_text": " "
-				},
-				{
+				"type": "button",
+				"text": {
 					"type": "plain_text",
-					"emoji": true,
-					"text": "Running"
-				}
-			]
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*<@WA62TKZU1>*\n\n*Customer Interactions*\n:arrow_up: *27%* from last week\n\n*Products Sold*\n:arrow_up: *76%* from last week\n\n*Upsold*\n:arrow_up: *27%* from last week\n"
-			},
-			"accessory": {
-				"type": "image",
-				"image_url": "https://ca.slack-edge.com/EA62SV8QZ-WA62TKZU1-e61e7c4d714e-512",
-				"alt_text": " "
-			}
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*Total Products Sold*       \n 🟩🟩🟩🟩🟩🟩🟩🟩 82%\n*Revenue Target*               \n🟩🟩🟩🟩🟩🟩 62%\n*Jordan Promo Contest*   \n🟩🟩🟩🟩🟩🟩🟩🟩🟩 94%"
-			},
-			"accessory": {
-				"type": "image",
-				"image_url": "https://icon-library.com/images/statistics-icon/statistics-icon-5.jpg",
-				"alt_text": " "
-			}
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "header",
-			"text": {
-				"type": "plain_text",
-				"text": "Active Promotions January-February 2021",
-				"emoji": true
-			}
-		},
-		{
-			"type": "section",
-			"fields": [
-				{
-					"type": "mrkdwn",
-					"text": ":one: *Up To 40% off Select Reacts*"
-				}
-			]
-		},
-		{
-			"type": "section",
-			"fields": [
-				{
-					"type": "mrkdwn",
-					"text": ":two: *Sustainable Materials extra sale - 10% extra off*"
-				}
-			]
-		},
-		{
-			"type": "context",
-			"elements": [
-				{
-					"type": "plain_text",
-					"text": "Ends March 1st, 2021",
+					"text": "Configure",
 					"emoji": true
-				}
-			]
+				},
+				"value": "click_me_123",
+				"action_id": "welcome-message"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":black_small_square: Message Cooldown"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Configure",
+					"emoji": true
+				},
+				"value": "click_me_123",
+				"action_id": "message-cooldown"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Work System*"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":black_small_square: Ticket Creation"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Configure",
+					"emoji": true
+				},
+				"value": "click_me_123",
+				"action_id": "ticket-creation"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Auto Respond*"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":black_small_square: Engine Settings"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Configure",
+					"emoji": true
+				},
+				"value": "click_me_123",
+				"action_id": "engine-settings"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Danger Zone*"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":black_small_square: Remove Porobot"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Remove",
+					"emoji": true
+				},
+				"value": "click_me_123",
+				"action_id": "remove-porobot"
+			}
 		}
 	]
 }
