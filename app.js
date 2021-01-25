@@ -405,7 +405,7 @@ app.view('general-settings-modal', ({ ack, body, view, context }) => {
   ack();
 });
 
-app.action('welcome-settings', async ({ body, ack, client }) => {
+app.action('welcome-message', async ({ body, ack, client }) => {
 
   try {
     // Acknowledge shortcut request
@@ -481,7 +481,7 @@ app.action('welcome-settings', async ({ body, ack, client }) => {
   }
 });
 
-app.view('welcome-settings-modal', ({ ack, body, view, context }) => {
+app.view('welcome-message-modal', ({ ack, body, view, context }) => {
   // Acknowledge the view_submission event
   ack();
 });
