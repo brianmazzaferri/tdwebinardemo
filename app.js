@@ -405,6 +405,87 @@ app.view('general-settings-modal', ({ ack, body, view, context }) => {
   ack();
 });
 
+app.action('welcome-settings', async ({ body, ack, client }) => {
+
+  try {
+    // Acknowledge shortcut request
+    await ack();
+
+    // Call the views.open method using one of the built-in WebClients
+    const result = await client.views.open({
+      trigger_id: body.trigger_id,
+      view: {
+	"type": "modal",
+	"callback_id": "welcome-message-modal",
+	"title": {
+		"type": "plain_text",
+		"text": "Welcome Users",
+		"emoji": true
+	},
+	"submit": {
+		"type": "plain_text",
+		"text": "Save",
+		"emoji": true
+	},
+	"close": {
+		"type": "plain_text",
+		"text": "Cancel",
+		"emoji": true
+	},
+	"blocks": [
+		{
+			"type": "input",
+			"optional": true,
+			"element": {
+				"type": "checkboxes",
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Enable Welcome Message",
+							"emoji": true
+						},
+						"value": "value-0"
+					}
+				],
+				"action_id": "checkboxes-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Settings",
+				"emoji": true
+			}
+		},
+		{
+			"type": "input",
+			"optional": true,
+			"element": {
+				"type": "plain_text_input",
+				"multiline": true,
+				"action_id": "plain_text_input-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Welcome Message",
+				"emoji": true
+			}
+		}
+	]
+}
+    });
+
+    console.log(result);
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
+
+app.view('welcome-settings-modal', ({ ack, body, view, context }) => {
+  // Acknowledge the view_submission event
+  ack();
+});
+
 //BOILERPLATE BELOW HERE
 
 //look up any one document from a query string
