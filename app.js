@@ -289,9 +289,7 @@ app.action('general-settings', async ({ ack, body, context }) => {
   try {
     // Update the message
     const result = await app.client.views.open({
-      token: context.botToken,
-      // ts of message to update
-      ts: body.message.ts,
+      trigger_id:body.trigger_id,
       view: {
 	"type": "modal",
 	"title": {
