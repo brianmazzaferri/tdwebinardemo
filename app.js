@@ -301,7 +301,7 @@ app.action('general-settings', async ({ body, ack, client }) => {
 	},
 	"submit": {
 		"type": "plain_text",
-		"text": "Submit",
+		"text": "Save",
 		"emoji": true
 	},
 	"close": {
