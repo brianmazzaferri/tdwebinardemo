@@ -292,6 +292,7 @@ app.action('general-settings', async ({ body, ack, client }) => {
     const result = await client.views.open({
       trigger_id: body.trigger_id,
       view: {
+	"callback_id": "general-settings-modal",
 	"type": "modal",
 	"title": {
 		"type": "plain_text",
@@ -395,6 +396,11 @@ app.action('general-settings', async ({ body, ack, client }) => {
   catch (error) {
     console.error(error);
   }
+});
+
+app.view('general-settings-modal', ({ ack, body, view, context }) => {
+  // Acknowledge the view_submission event
+  ack();
 });
 
 //BOILERPLATE BELOW HERE
