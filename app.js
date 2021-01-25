@@ -292,8 +292,8 @@ app.action('general-settings', async ({ body, ack, client }) => {
     const result = await client.views.open({
       trigger_id: body.trigger_id,
       view: {
-	"callback_id": "general-settings-modal",
 	"type": "modal",
+	"callback_id": "general-settings-modal",
 	"title": {
 		"type": "plain_text",
 		"text": "PoroBot Settings",
@@ -345,6 +345,7 @@ app.action('general-settings', async ({ body, ack, client }) => {
 		},
 		{
 			"type": "input",
+			"optional": true,
 			"element": {
 				"type": "checkboxes",
 				"options": [
@@ -361,12 +362,13 @@ app.action('general-settings', async ({ body, ack, client }) => {
 			},
 			"label": {
 				"type": "plain_text",
-				"text": "Trigger Settings (optional)",
+				"text": "Trigger Settings",
 				"emoji": true
 			}
 		},
 		{
 			"type": "input",
+			"optional": true,
 			"element": {
 				"type": "checkboxes",
 				"options": [
@@ -383,7 +385,7 @@ app.action('general-settings', async ({ body, ack, client }) => {
 			},
 			"label": {
 				"type": "plain_text",
-				"text": "Debug Settings (optional)",
+				"text": "Debug Settings",
 				"emoji": true
 			}
 		}
