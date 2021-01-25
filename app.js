@@ -282,14 +282,15 @@ app.event('app_home_opened', async ({ event, client, context }) => {
   }
 });
 
-app.action('general-settings', async ({ ack, body, context }) => {
-  // Acknowledge the button request
-  ack();
+app.action('general-settings', async ({ body, ack, client }) => {
 
   try {
-    // Update the message
-    const result = await app.client.views.open({
-      trigger_id:body.trigger_id,
+    // Acknowledge shortcut request
+    await ack();
+
+    // Call the views.open method using one of the built-in WebClients
+    const result = await client.views.open({
+      trigger_id: body.trigger_id,
       view: {
 	"type": "modal",
 	"title": {
@@ -388,6 +389,7 @@ app.action('general-settings', async ({ ack, body, context }) => {
 	]
 }
     });
+
     console.log(result);
   }
   catch (error) {
