@@ -505,7 +505,7 @@ app.action('ticket-creation', async ({ body, ack, client }) => {
 	},
 	"submit": {
 		"type": "plain_text",
-		"text": "Save",
+		"text": "Next",
 		"emoji": true
 	},
 	"close": {
