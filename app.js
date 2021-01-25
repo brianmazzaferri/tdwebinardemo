@@ -282,6 +282,121 @@ app.event('app_home_opened', async ({ event, client, context }) => {
   }
 });
 
+app.action('general-settings', async ({ ack, body, context }) => {
+  // Acknowledge the button request
+  ack();
+
+  try {
+    // Update the message
+    const result = await app.client.views.open({
+      token: context.botToken,
+      // ts of message to update
+      ts: body.message.ts,
+      view: {
+	"type": "modal",
+	"title": {
+		"type": "plain_text",
+		"text": "PoroBot Settings",
+		"emoji": true
+	},
+	"submit": {
+		"type": "plain_text",
+		"text": "Submit",
+		"emoji": true
+	},
+	"close": {
+		"type": "plain_text",
+		"text": "Cancel",
+		"emoji": true
+	},
+	"blocks": [
+		{
+			"type": "input",
+			"element": {
+				"type": "plain_text_input",
+				"action_id": "plain_text_input-action",
+				"initial_value": "PoroBot porobot-demo"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Name",
+				"emoji": true
+			}
+		},
+		{
+			"type": "input",
+			"element": {
+				"type": "multi_users_select",
+				"initial_users": [
+					"WTFQ276S3"
+				],
+				"placeholder": {
+					"type": "plain_text",
+					"text": "Select users",
+					"emoji": true
+				},
+				"action_id": "multi_users_select-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Channel Administrators",
+				"emoji": true
+			}
+		},
+		{
+			"type": "input",
+			"element": {
+				"type": "checkboxes",
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Trigger via :porobot: reaction on message",
+							"emoji": true
+						},
+						"value": "value-0"
+					}
+				],
+				"action_id": "checkboxes-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Trigger Settings (optional)",
+				"emoji": true
+			}
+		},
+		{
+			"type": "input",
+			"element": {
+				"type": "checkboxes",
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Enable Debug Mode",
+							"emoji": true
+						},
+						"value": "value-0"
+					}
+				],
+				"action_id": "checkboxes-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Debug Settings (optional)",
+				"emoji": true
+			}
+		}
+	]
+}
+    });
+    console.log(result);
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
+
 //BOILERPLATE BELOW HERE
 
 //look up any one document from a query string
