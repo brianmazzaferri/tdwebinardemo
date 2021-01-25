@@ -581,6 +581,93 @@ app.view('ticket-creation-modal', ({ ack, body, view, context }) => {
   ack();
 });
 
+app.action('engine-settings', async ({ body, ack, client }) => {
+
+  try {
+    // Acknowledge shortcut request
+    await ack();
+
+    // Call the views.open method using one of the built-in WebClients
+    const result = await client.views.open({
+      trigger_id: body.trigger_id,
+      view: {
+	"type": "modal",
+	"callback_id": "engine-settings-modal",
+	"title": {
+		"type": "plain_text",
+		"text": "Auto Response",
+		"emoji": true
+	},
+	"submit": {
+		"type": "plain_text",
+		"text": "Save",
+		"emoji": true
+	},
+	"close": {
+		"type": "plain_text",
+		"text": "Cancel",
+		"emoji": true
+	},
+	"blocks": [
+		{
+			"type": "input",
+			"element": {
+				"type": "static_select",
+				"initial_option": {
+					"text": {
+						"type": "plain_text",
+						"text": "Disabled",
+						"emoji": true
+					},
+					"value": "value-0"
+				},
+				"placeholder": {
+					"type": "plain_text",
+					"text": "Select an item",
+					"emoji": true
+				},
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Disabled",
+							"emoji": true
+						},
+						"value": "value-0"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Pattern Matcher",
+							"emoji": true
+						},
+						"value": "value-1"
+					}
+				],
+				"action_id": "static_select-action"
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "AutoRespond Engine",
+				"emoji": true
+			}
+		}
+	]
+}
+    });
+
+    console.log(result);
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
+
+app.view('engine-settings-modal', ({ ack, body, view, context }) => {
+  // Acknowledge the view_submission event
+  ack();
+});
+
 //BOILERPLATE BELOW HERE
 
 //look up any one document from a query string
