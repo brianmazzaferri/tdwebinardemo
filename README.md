@@ -1,5 +1,3 @@
-# Brian's Basic Bolt
+# Tech & Dev Webinar Demo
 
-This is a basic take on Bolt for Javascript,
-pre setup for distribution via the Bolt OAuth flow,
-using a simple nedb database
+Installable bot for tech & dev webinar demo
